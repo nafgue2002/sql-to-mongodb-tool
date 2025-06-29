@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="fr" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Convertisseur SQL vers MongoDB</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header class="header">
+            <h1><i class="fas fa-database"></i> Convertisseur SQL vers MongoDB</h1>
+            <p>Outil de conversion des schémas de bases de données relationnelles vers le modèle NoSQL</p>
+        </header>
+
+        <!-- Input Section -->
+        <div class="input-section">
+            <h2><i class="fas fa-upload"></i> Saisie du schéma SQL</h2>
+            
+            <!-- Input Options -->
+            <div class="input-options">
+                <!-- File Upload Option -->
+                <div class="upload-option">
+                    <h3><i class="fas fa-file-upload"></i> Choisir un fichier</h3>
+                    <div class="upload-box" id="uploadBox">
+                        <i class="fas fa-cloud-upload-alt"></i>
+                        <p>Déposez le fichier SQL ici</p>
+                        <input type="file" id="sqlFile" accept=".sql" hidden>
+                        <button class="btn-upload" onclick="document.getElementById('sqlFile').click()">
+                            <i class="fas fa-folder-open"></i> Parcourir les fichiers
+                        </button>
+                    </div>
+                    <div class="file-info" id="fileInfo" style="display: none;">
+                        <i class="fas fa-file-code"></i>
+                        <span id="fileName"></span>
+                        <button class="btn-remove" onclick="removeFile()">
+                            <i class="fas fa-times"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Manual Input Option -->
+                <div class="upload-option manual-option">
+                    <h3><i class="fas fa-code"></i> Saisir le code SQL manuellement</h3>
+                    <div class="manual-input">
+                        <textarea id="sqlInput" placeholder="Exemple :
+CREATE TABLE users (
+    id INT PRIMARY KEY,
+    name VARCHAR(100),
+    email VARCHAR(100)
+);
+
+CREATE TABLE orders (
+    id INT PRIMARY KEY,
+    user_id INT,
+    total DECIMAL(10,2),
+    FOREIGN KEY (user_id) REFERENCES users(id)
+);"></textarea>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Action Buttons -->
+            <div class="action-buttons">
+                <button class="btn-primary" id="analyzeBtn">
+                    <i class="fas fa-cogs"></i> Analyser & Convertir
+                </button>
+                <button class="btn-secondary" id="clearBtn">
+                    <i class="fas fa-eraser"></i> Effacer
+                </button>
+            </div>
+        </div>
+
+        <!-- Analysis Section -->
+        <div class="analysis-section" id="analysisSection" style="display: none;">
+            <h2><i class="fas fa-project-diagram"></i> Analyse des relations</h2>
+            <div class="relations-container" id="relationsContainer">
+                <!-- Les relations apparaîtront ici -->
+            </div>
+        </div>
+
+        <!-- Results Section -->
+        <div class="results-section" id="resultsSection" style="display: none;">
+            <h2><i class="fas fa-leaf"></i> Résultat - Schéma MongoDB</h2>
+            <div class="result-header">
+                <div class="result-info">
+                    <span id="resultInfo">Conversion réussie</span>
+                </div>
+                <div class="download-buttons">
+                    <button class="btn-download" id="downloadJson">
+                        <i class="fas fa-download"></i> JSON
+                    </button>
+                    <button class="btn-download" id="downloadTxt">
+                        <i class="fas fa-file-alt"></i> Texte
+                    </button>
+                </div>
+            </div>
+            <div class="result-container">
+                <pre id="resultCode"></pre>
+            </div>
+        </div>
+
+        <!-- Loading Spinner -->
+        <div class="loading-overlay" id="loadingOverlay" style="display: none;">
+            <div class="spinner"></div>
+            <p>Analyse et conversion en cours...</p>
+        </div>
+    </div>
+
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+</body>
+</html>
