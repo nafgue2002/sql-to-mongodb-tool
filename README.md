@@ -28,3 +28,10 @@ Chargez un fichier contenant des instructions `CREATE TABLE`, et l’outil gén�
 
 Le dépôt complet est accessible ici :  
 👉 [https://github.com/nafgue2002/sql-to-mongodb-tool](https://github.com/nafgue2002/sql-to-mongodb-tool)
+---
+
+## À propos de l’auteure
+
+Développé par **Nafissa Gueffaf**, étudiante ingénieure en Informatique spécialité "Système D'information et de Décision", promotion 2025.
+
+Projet réalisé dans le cadre du mémoire de fin d’études.
