@@ -32,6 +32,6 @@ Le dépôt complet est accessible ici :
 
 ## À propos de l’auteure
 
-Développé par **Nafissa Gueffaf**, étudiante ingénieure en Informatique spécialité "Système D'information et de Décision", promotion 2025.
+Développé par **Nafissa Gueffaf**, étudiante ingénieure en Informatique, spécialité "Systèmes D'information et de Décision", promotion 2025.
 
 Projet réalisé dans le cadre du mémoire de fin d’études.
